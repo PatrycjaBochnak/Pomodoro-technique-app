@@ -30,12 +30,29 @@ function App() {
   }, []);
 
   return (
-    <>
-      <div className="App">
-        <header className="App-header">Hello World Days{days}</header>
+    <div className="App">
+      <header className="App-header"></header>
+      <div className="timer-inner">
+        <div className="timer-segment">
+          <span className="time">{days}</span>
+          <span className="label">Days</span>
+        </div>
+        <div className="timer-segment">
+          <span className="time">{hours}</span>
+          <span className="label">Hours</span>
+        </div>
+        <div className="timer-segment">
+          <span className="time">{minutes}</span>
+          <span className="label">Minutes</span>
+        </div>
+        <div className="timer-segment">
+          <span className="time">{seconds}</span>
+          <span className="label">Seconds</span>
+        </div>
       </div>
-    </>
+    </div>
   );
+  
 }
 
 export default App;
