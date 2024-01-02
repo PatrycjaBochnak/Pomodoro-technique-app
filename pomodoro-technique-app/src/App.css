@@ -12,6 +12,7 @@
   text-align: center;
   text-decoration: none;
   color: black;
+  background-color: #282c34;
 }
 
 .App-header .timer-inner {
