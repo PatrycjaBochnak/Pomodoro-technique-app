@@ -32,8 +32,6 @@ const Timer: React.FC = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Pomodoro app</h1>
       <div>
         <div>
           <span>{days}</span>
@@ -52,9 +50,7 @@ const Timer: React.FC = () => {
           <span>Seconds</span>
         </div>
       </div>
-    </div>
   );
 };
 
 export default Timer;
-g

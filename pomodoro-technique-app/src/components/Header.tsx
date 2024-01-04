@@ -33,7 +33,7 @@ const StyledH1 = styled.h1<StyledTextProps>`
   color: var(--Beige, #fef2e7);
   text-align: center;
   font-family: Raleway;
-  font-size: 20px;
+  font-size: 15px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -53,7 +53,7 @@ const StyledHeader = styled.header`
 
 export const Header = () => {
   
-    const [headerText, setHeaderText] = useState('🍅 ');
+    const [headerText, setHeaderText] = useState('🍅 Keep calm and pomodoro 🍅');
     const [spanText, setSpanText] = useState('– POMODORO TECHNIQUE APP –');
     const [showText, setShowText] = useState(true);
   
