@@ -1,54 +1,41 @@
-import { keyframes } from 'styled-components';
+import { keyframes } from 'styled-components'
 
-const translateUp = 'translate(0, 0)';
-const translateRightUp = 'translate(25px, 15px)';
-const translateRight = 'translate(50px, 0)';
-const translateRightDown = 'translate(25px, -15px)';
-const translateLeftDown = 'translate(-25px, -15px)';
-const translateLeft = 'translate(-50px, 0)';
-const translateLeftUp = 'translate(-25px, 15px)';
-
-// Orbit Animation 1
 export const orbitAnimation1 = keyframes`
-  0% { transform: ${translateUp}; }
-  25% { transform: ${translateRightUp}; }
-  50% { transform: ${translateRight}; }
-  75% { transform: ${translateRightDown}; }
-  100% { transform: ${translateUp}; }
-`;
+0% { transform: translate(0, 0); }
+25% { transform: translate(25px, 15px); }
+50% { transform: translate(50px, 0); }
+75% { transform: translate(25px, -15px); }
+100% { transform: translate(0, 0); }
+`
 
-// Orbit Animation 2
 export const orbitAnimation2 = keyframes`
-  0% { transform: ${translateUp}; }
-  25% { transform: ${translateLeftUp}; }
-  50% { transform: ${translateLeft}; }
-  75% { transform: ${translateLeftDown}; }
-  100% { transform: ${translateUp}; }
-`;
+0% { transform: translate(0, 0); }
+  25% { transform: translate(-25px, -15px); }
+  50% { transform: translate(-50px, 0); }
+  75% { transform: translate(-25px, 15px); }
+    100% { transform: translate(0, 0); }
+`
 
-// Orbit Animation 3
 export const orbitAnimation3 = keyframes`
-  0% { transform: ${translateUp}; }
-  25% { transform: ${translateRightUp}; }
-  50% { transform: ${translateRight}; }
-  75% { transform: ${translateRightDown}; }
-  100% { transform: ${translateUp}; }
-`;
+0% { transform: translate(0, 0); }
+  25% { transform: translate(35px, 5px); }
+  50% { transform: translate(50px, 25px); }
+  75% { transform: translate(35px, 30px); }
+    100% { transform: translate(0, 0); }
+`
 
-// Orbit Animation 4
 export const orbitAnimation4 = keyframes`
-  0% { transform: ${translateUp}; }
-  25% { transform: ${translateLeft}; }
-  50% { transform: ${translateLeftDown}; }
-  75% { transform: ${translateLeftUp}; }
-  100% { transform: ${translateUp}; }
-`;
+0% { transform: translate(0, 0); }
+  25% { transform: translate(-35px, 0); }
+  50% { transform: translate(-50px, 35px); }
+  75% { transform: translate(-35px, -25px); }
+    100% { transform: translate(0, 0); }
+`
 
-// Orbit Animation 5
 export const orbitAnimation5 = keyframes`
-  0% { transform: ${translateUp}; }
-  25% { transform: ${translateRightDown}; }
-  50% { transform: ${translateLeftDown}; }
-  75% { transform: ${translateLeftUp}; }
-  100% { transform: ${translateUp}; }
-`;
+0% { transform: translate(0, 0); }
+  25% { transform: translate(35px, -25px); }
+  50% { transform: translate(-35px, -50px); }
+  75% { transform: translate(-50px, 15px); }
+100% { transform: translate(0, 0); }
+`
