@@ -42,9 +42,9 @@ export const StartButton = () => {
   const [showText, setShowText] = useState(true);
 
   useEffect(() => {
-    let newText = 'START FOCUS';
+    let newText = 'START';
     if (mode === 'home') {
-      newText = 'START FOCUS';
+      newText = 'START';
     } else if (isFocusCompleted && mode === 'focus') {
       newText = `BREAK ${breakTime.minutes}:00`;
     } else if (isBreakCompleted && mode === 'break') {
@@ -54,7 +54,7 @@ export const StartButton = () => {
     } else if (isTimerPaused) {
       newText = 'RESUME';
     } else {
-      newText = mode === 'focus' ? 'START FOCUS' : 'START BREAK';
+      newText = mode === 'focus' ? 'START' : 'BREAK';
     }
 
     if (newText !== buttonText) {

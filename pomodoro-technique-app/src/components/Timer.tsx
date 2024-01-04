@@ -1,56 +1,178 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react'
+import styled from 'styled-components'
+import { TimerState } from '../types/types'
+import { useStore } from '../store/store'
+import Plus from '../assets/Plus'
+import Minus from '../assets/Minus'
 
-const Timer: React.FC = () => {
-  const [days, setDays] = useState<number>(0);
-  const [hours, setHours] = useState<number>(0);
-  const [minutes, setMinutes] = useState<number>(0);
-  const [seconds, setSeconds] = useState<number>(0);
+interface CircleProps {
+  top: string
+  left: string
+  opacity: number
+  animation: any
+  isPaused: boolean
+}
 
-  useEffect(() => {
-    const target = new Date("11/11/2024 23:59:59");
+const TimerContainer = styled.div`
+  margin-top: 180px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  min-height: 158px;
+  width: 168px;
+`
 
-    const interval = setInterval(() => {
-      const now = new Date();
-      const difference = target.getTime() - now.getTime();
-      const d = Math.floor(difference / (1000 * 60 * 60 * 24));
-      setDays(d);
-      const h = Math.floor(
-        (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      );
-      setHours(h);
-      const m = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-      setMinutes(m);
-      const s = Math.floor((difference % (1000 * 60)) / 1000);
-      setSeconds(s);
+const TimeDisplay = styled.span`
+  margin-top: 25px;
+  color: var(--Beige, #fef2e7);
+  text-align: center;
+  font-family: Inter;
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 60px; /* 100% */
+  letter-spacing: 6px;
+`
 
-      if (d <= 0 && h <= 0 && m <= 0 && s <= 0) {
-        clearInterval(interval);
-      }
-    }, 1000);
+const ButtonsContainer = styled.div`
+  display: flex;
+  gap: 15px;
+`
 
-    return () => clearInterval(interval);
-  }, []);
+const Overtime = styled.div`
+  color: var(--Beige, #fef2e7);
+  text-align: center;
+  font-family: Inter;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 40px; /* 133.333% */
+  letter-spacing: 3px;
+  position: absolute;
+  top: 100px;
+`
+
+const TimerButton = styled.button`
+  display: flex;
+  width: 55px;
+  height: 55px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 80px;
+  border: 0.5px solid var(--Beige, #fef2e7);
+  background: var(--Dark, #000300);
+  cursor: pointer;
+  z-index: 100;
+`
+
+const Circle = styled.div<CircleProps>`
+  width: 407.895px;
+  height: 407.088px;
+  flex-shrink: 0;
+  border-radius: 407.895px;
+  border: 1px solid var(--Beige, #fef2e7);
+  opacity: ${(props) => props.opacity};
+  position: absolute;
+  top: ${(props) => props.top};
+  left: ${(props) => props.left};
+  animation: ${(props) => props.animation} 10000ms ease-in-out infinite;
+  animation-play-state: ${(props) => (props.isPaused ? 'paused' : 'running')};
+`
+
+const Timer = () => {
+  const {
+    mode,
+    focusTime,
+    breakTime,
+    setFocusTime,
+    setBreakTime,
+    isTimerRunning,
+    isTimerPaused,
+    overtime,
+    isFocusCompleted,
+    setInitialFocusTime,
+    initialFocusTime,
+    setInitialBreakTime,
+    initialBreakTime,
+    isBreakCompleted,
+    isOvertimeRunning,
+  } = useStore()
+
+  const handleDecrease = () => {
+    if (mode === 'focus') {
+      setFocusTime({
+        ...focusTime,
+        minutes: Math.max(focusTime.minutes - 5, 5),
+      })
+      setInitialFocusTime({
+        ...initialFocusTime,
+        minutes: Math.max(initialFocusTime.minutes - 5, 5),
+      })
+    } else {
+      setBreakTime({
+        ...breakTime,
+        minutes: Math.max(breakTime.minutes - 5, 5),
+      })
+      setInitialBreakTime({
+        ...initialBreakTime,
+        minutes: Math.max(initialBreakTime.minutes - 5, 5),
+      })
+    }
+  }
+
+  const handleIncrease = () => {
+    if (mode === 'focus' || mode === 'home') {
+      setFocusTime({ ...focusTime, minutes: focusTime.minutes + 5 })
+      setInitialFocusTime({
+        ...initialFocusTime,
+        minutes: initialFocusTime.minutes + 5,
+      })
+    } else {
+      setBreakTime({ ...breakTime, minutes: breakTime.minutes + 5 })
+      setInitialBreakTime({
+        ...initialBreakTime,
+        minutes: initialBreakTime.minutes + 5,
+      })
+    }
+  }
+
+  const formatTime = ({ minutes, seconds }: TimerState) => {
+    const formattedMinutes = minutes.toString().padStart(2, '0')
+    const formattedSeconds = seconds.toString().padStart(2, '0')
+    return `${formattedMinutes}:${formattedSeconds}`
+  }
+
+  const currentTimerValue = (mode === 'focus' || mode === 'home') ? focusTime : breakTime;
+
+
+  const formattedOvertime = `+ ${formatTime(overtime)}`
+
+  const showButtonsContainer =
+    !isTimerRunning &&
+    !isTimerPaused &&
+    !(isFocusCompleted && mode === 'focus') &&
+    !(isBreakCompleted && mode === 'break')
 
   return (
-      <div>
-        <div>
-          <span>{days}</span>
-          <span>Days</span>
-        </div>
-        <div>
-          <span>{hours}</span>
-          <span>Hours</span>
-        </div>
-        <div>
-          <span>{minutes}</span>
-          <span>Minutes</span>
-        </div>
-        <div>
-          <span>{seconds}</span>
-          <span>Seconds</span>
-        </div>
-      </div>
-  );
-};
+    <TimerContainer>
+      <TimeDisplay>{formatTime(currentTimerValue)}</TimeDisplay>
+      {showButtonsContainer && (
+        <ButtonsContainer>
+          <TimerButton onClick={handleDecrease}>
+            <Minus />
+          </TimerButton>
+          <TimerButton onClick={handleIncrease}>
+            <Plus />
+          </TimerButton>
+        </ButtonsContainer>
+      )}
+      {isOvertimeRunning && <Overtime>{formattedOvertime}</Overtime>}
+    </TimerContainer>
+  )
+}
 
-export default Timer;
+export default Timer

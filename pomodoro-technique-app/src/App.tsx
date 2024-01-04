@@ -3,6 +3,8 @@ import "./styles/App.css";
 import styled from 'styled-components'
 import Header from "./components/Header";
 import Timer from "./components/Timer";
+import StartButton from "./components/StartButton";
+import StopButton from "./components/StopButton";
 
 const Container = styled.div`
   min-width: 390px;
@@ -26,6 +28,8 @@ function App() {
    <Container> 
     <Header/>
     <Timer/>
+    <StartButton />
+    <StopButton />
    </Container>
   );
 }
