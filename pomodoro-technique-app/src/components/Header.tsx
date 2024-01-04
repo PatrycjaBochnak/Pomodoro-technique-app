@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled, { keyframes } from 'styled-components';
-import { fadeIn, fadeOut } from '../animations/animations';
+import { fadeIn, fadeOut } from '../animations/animations'
 
 interface StyledTextProps {
   show: boolean;

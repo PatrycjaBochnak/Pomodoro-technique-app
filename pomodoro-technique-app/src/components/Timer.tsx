@@ -1,18 +1,18 @@
-import React from 'react'
-import styled from 'styled-components'
-import { TimerState } from '../types/types'
-import { useStore } from '../store/store'
-import Plus from '../assets/Plus'
-import Minus from '../assets/Minus'
+import React from "react";
+import styled from "styled-components";
+import { TimerState } from "../types/types";
+import { useStore } from "../store/store";
+import Plus from "../assets/Plus";
+import Minus from "../assets/Minus";
+import { orbitAnimation1, orbitAnimation2, orbitAnimation3, orbitAnimation4, orbitAnimation5 } from '../animations/circles'
 
 interface CircleProps {
-  top: string
-  left: string
-  opacity: number
-  animation: any
-  isPaused: boolean
+  top: string;
+  left: string;
+  opacity: number;
+  animation: Keyframes | undefined;
+  isPaused: boolean;
 }
-
 const TimerContainer = styled.div`
   margin-top: 180px;
   position: relative;
@@ -22,7 +22,7 @@ const TimerContainer = styled.div`
   gap: 15px;
   min-height: 158px;
   width: 168px;
-`
+`;
 
 const TimeDisplay = styled.span`
   margin-top: 25px;
@@ -34,12 +34,12 @@ const TimeDisplay = styled.span`
   font-weight: 300;
   line-height: 60px; /* 100% */
   letter-spacing: 6px;
-`
+`;
 
 const ButtonsContainer = styled.div`
   display: flex;
   gap: 15px;
-`
+`;
 
 const Overtime = styled.div`
   color: var(--Beige, #fef2e7);
@@ -52,7 +52,7 @@ const Overtime = styled.div`
   letter-spacing: 3px;
   position: absolute;
   top: 100px;
-`
+`;
 
 const TimerButton = styled.button`
   display: flex;
@@ -67,7 +67,7 @@ const TimerButton = styled.button`
   background: var(--Dark, #000300);
   cursor: pointer;
   z-index: 100;
-`
+`;
 
 const Circle = styled.div<CircleProps>`
   width: 407.895px;
@@ -80,8 +80,8 @@ const Circle = styled.div<CircleProps>`
   top: ${(props) => props.top};
   left: ${(props) => props.left};
   animation: ${(props) => props.animation} 10000ms ease-in-out infinite;
-  animation-play-state: ${(props) => (props.isPaused ? 'paused' : 'running')};
-`
+  animation-play-state: ${(props) => (props.isPaused ? "paused" : "running")};
+`;
 
 const Timer = () => {
   const {
@@ -100,62 +100,62 @@ const Timer = () => {
     initialBreakTime,
     isBreakCompleted,
     isOvertimeRunning,
-  } = useStore()
+  } = useStore();
 
   const handleDecrease = () => {
-    if (mode === 'focus') {
+    if (mode === "focus") {
       setFocusTime({
         ...focusTime,
         minutes: Math.max(focusTime.minutes - 5, 5),
-      })
+      });
       setInitialFocusTime({
         ...initialFocusTime,
         minutes: Math.max(initialFocusTime.minutes - 5, 5),
-      })
+      });
     } else {
       setBreakTime({
         ...breakTime,
         minutes: Math.max(breakTime.minutes - 5, 5),
-      })
+      });
       setInitialBreakTime({
         ...initialBreakTime,
         minutes: Math.max(initialBreakTime.minutes - 5, 5),
-      })
+      });
     }
-  }
+  };
 
   const handleIncrease = () => {
-    if (mode === 'focus' || mode === 'home') {
-      setFocusTime({ ...focusTime, minutes: focusTime.minutes + 5 })
+    if (mode === "focus" || mode === "home") {
+      setFocusTime({ ...focusTime, minutes: focusTime.minutes + 5 });
       setInitialFocusTime({
         ...initialFocusTime,
         minutes: initialFocusTime.minutes + 5,
-      })
+      });
     } else {
-      setBreakTime({ ...breakTime, minutes: breakTime.minutes + 5 })
+      setBreakTime({ ...breakTime, minutes: breakTime.minutes + 5 });
       setInitialBreakTime({
         ...initialBreakTime,
         minutes: initialBreakTime.minutes + 5,
-      })
+      });
     }
-  }
+  };
 
   const formatTime = ({ minutes, seconds }: TimerState) => {
-    const formattedMinutes = minutes.toString().padStart(2, '0')
-    const formattedSeconds = seconds.toString().padStart(2, '0')
-    return `${formattedMinutes}:${formattedSeconds}`
-  }
+    const formattedMinutes = minutes.toString().padStart(2, "0");
+    const formattedSeconds = seconds.toString().padStart(2, "0");
+    return `${formattedMinutes}:${formattedSeconds}`;
+  };
 
-  const currentTimerValue = (mode === 'focus' || mode === 'home') ? focusTime : breakTime;
+  const currentTimerValue =
+    mode === "focus" || mode === "home" ? focusTime : breakTime;
 
-
-  const formattedOvertime = `+ ${formatTime(overtime)}`
+  const formattedOvertime = `+ ${formatTime(overtime)}`;
 
   const showButtonsContainer =
     !isTimerRunning &&
     !isTimerPaused &&
-    !(isFocusCompleted && mode === 'focus') &&
-    !(isBreakCompleted && mode === 'break')
+    !(isFocusCompleted && mode === "focus") &&
+    !(isBreakCompleted && mode === "break");
 
   return (
     <TimerContainer>
@@ -171,8 +171,43 @@ const Timer = () => {
         </ButtonsContainer>
       )}
       {isOvertimeRunning && <Overtime>{formattedOvertime}</Overtime>}
+      <Circle
+        animation={orbitAnimation1}
+        isPaused={!isTimerRunning}
+        top="-105px"
+        left="-105px"
+        opacity={0.8}
+      />
+      <Circle
+        animation={orbitAnimation2}
+        isPaused={!isTimerRunning}
+        top="-109px"
+        left="-137px"
+        opacity={0.4}
+      />
+      <Circle
+        animation={orbitAnimation3}
+        isPaused={!isTimerRunning}
+        top="-102px"
+        left="-145px"
+        opacity={0.2}
+      />
+      <Circle
+        animation={orbitAnimation4}
+        isPaused={!isTimerRunning}
+        top="-97px"
+        left="-105px"
+        opacity={1}
+      />
+      <Circle
+        animation={orbitAnimation5}
+        isPaused={!isTimerRunning}
+        top="-105px"
+        left="-105px"
+        opacity={0.6}
+      />
     </TimerContainer>
-  )
-}
+  );
+};
 
-export default Timer
+export default Timer;
