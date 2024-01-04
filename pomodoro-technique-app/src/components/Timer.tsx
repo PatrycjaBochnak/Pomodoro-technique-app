@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
 
 const Timer: React.FC = () => {
   const [days, setDays] = useState<number>(0);
@@ -33,52 +32,29 @@ const Timer: React.FC = () => {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <Text>Pomodoro app</Text>
-      <Button title="Start timer" onPress={() => console.log('start timer')} />
-
-      <View style={styles.timerInner}>
-        <View style={styles.timerSegment}>
-          <Text style={styles.time}>{days}</Text>
-          <Text style={styles.label}>Days</Text>
-        </View>
-        <View style={styles.timerSegment}>
-          <Text style={styles.time}>{hours}</Text>
-          <Text style={styles.label}>Hours</Text>
-        </View>
-        <View style={styles.timerSegment}>
-          <Text style={styles.time}>{minutes}</Text>
-          <Text style={styles.label}>Minutes</Text>
-        </View>
-        <View style={styles.timerSegment}>
-          <Text style={styles.time}>{seconds}</Text>
-          <Text style={styles.label}>Seconds</Text>
-        </View>
-      </View>
-    </View>
+    <div>
+      <h1>Pomodoro app</h1>
+      <div>
+        <div>
+          <span>{days}</span>
+          <span>Days</span>
+        </div>
+        <div>
+          <span>{hours}</span>
+          <span>Hours</span>
+        </div>
+        <div>
+          <span>{minutes}</span>
+          <span>Minutes</span>
+        </div>
+        <div>
+          <span>{seconds}</span>
+          <span>Seconds</span>
+        </div>
+      </div>
+    </div>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  timerInner: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-  },
-  timerSegment: {
-    alignItems: 'center',
-  },
-  time: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  label: {
-    fontSize: 12,
-  },
-});
-
 export default Timer;
+g
