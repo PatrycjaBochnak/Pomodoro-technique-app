@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { StyleSheet, Text, View, Button } from 'react-native';
 
-const Timer = () => {
-  const [partyTime, setPartyTime] = useState(false);
+const Timer: React.FC = () => {
   const [days, setDays] = useState<number>(0);
   const [hours, setHours] = useState<number>(0);
   const [minutes, setMinutes] = useState<number>(0);
@@ -25,7 +25,6 @@ const Timer = () => {
       setSeconds(s);
 
       if (d <= 0 && h <= 0 && m <= 0 && s <= 0) {
-        setPartyTime(true);
         clearInterval(interval);
       }
     }, 1000);
@@ -34,32 +33,52 @@ const Timer = () => {
   }, []);
 
   return (
-    <div className="App">
-      <header className="App-header"></header>
-      {partyTime ? (
-        <h1>Happy NYE</h1>
-      ) : (
-        <div className="timer-inner">
-          <div className="timer-segment">
-            <span className="time">{days}</span>
-            <span className="label">Days</span>
-          </div>
-          <div className="timer-segment">
-            <span className="time">{hours}</span>
-            <span className="label">Hours</span>
-          </div>
-          <div className="timer-segment">
-            <span className="time">{minutes}</span>
-            <span className="label">Minutes</span>
-          </div>
-          <div className="timer-segment">
-            <span className="time">{seconds}</span>
-            <span className="label">Seconds</span>
-          </div>
-        </div>
-      )}
-    </div>
+    <View style={styles.container}>
+      <Text>Pomodoro app</Text>
+      <Button title="Start timer" onPress={() => console.log('start timer')} />
+
+      <View style={styles.timerInner}>
+        <View style={styles.timerSegment}>
+          <Text style={styles.time}>{days}</Text>
+          <Text style={styles.label}>Days</Text>
+        </View>
+        <View style={styles.timerSegment}>
+          <Text style={styles.time}>{hours}</Text>
+          <Text style={styles.label}>Hours</Text>
+        </View>
+        <View style={styles.timerSegment}>
+          <Text style={styles.time}>{minutes}</Text>
+          <Text style={styles.label}>Minutes</Text>
+        </View>
+        <View style={styles.timerSegment}>
+          <Text style={styles.time}>{seconds}</Text>
+          <Text style={styles.label}>Seconds</Text>
+        </View>
+      </View>
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  timerInner: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+  timerSegment: {
+    alignItems: 'center',
+  },
+  time: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  label: {
+    fontSize: 12,
+  },
+});
 
 export default Timer;
