@@ -1,15 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled, { keyframes } from 'styled-components';
-
-const fadeIn = keyframes`
-  from { opacity: 0.5; }
-  to { opacity: 1; }
-`;
-
-const fadeOut = keyframes`
-  from { opacity: 1; }
-  to { opacity: 0.5; }
-`;
+import { fadeIn, fadeOut } from '../animations/animations';
 
 interface StyledTextProps {
   show: boolean;
@@ -54,7 +45,7 @@ const StyledHeader = styled.header`
 export const Header = () => {
   
     const [headerText, setHeaderText] = useState('🍅 Keep calm and pomodoro 🍅');
-    const [spanText, setSpanText] = useState('– POMODORO TECHNIQUE APP –');
+    const [spanText, setSpanText] = useState('– Pomodoro technique app –');
     const [showText, setShowText] = useState(true);
   
     return (
