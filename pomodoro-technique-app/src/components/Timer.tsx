@@ -1,10 +1,9 @@
 import React from "react";
-import styled from "styled-components";
 import { TimerState } from "../types/types";
 import { useStore } from "../store/store";
 import Plus from "../assets/Plus";
 import Minus from "../assets/Minus";
-import { keyframes } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import {
     orbitAnimation1,
     orbitAnimation2,
@@ -92,6 +91,10 @@ const Circle = styled.div<CircleProps>`
     infinite;
   animation-play-state: ${(props) => (props.isPaused ? "paused" : "running")};
 `;
+
+const animationCircles = props => css<AnimationProps>`
+${animationCircle1} ${props.$animationLength} infinite alternate;
+`
 const Timer = () => {
     const {
       mode,

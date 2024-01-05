@@ -1,6 +1,10 @@
 import { keyframes } from 'styled-components'
 
-export const orbitAnimation1 = keyframes`
+interface AnimationProps {
+    $animationLength: number;
+}
+
+const orbitAnimation1 = keyframes`
 0% { transform: translate(0, 0); }
 25% { transform: translate(25px, 15px); }
 50% { transform: translate(50px, 0); }
@@ -8,7 +12,7 @@ export const orbitAnimation1 = keyframes`
 100% { transform: translate(0, 0); }
 `
 
-export const orbitAnimation2 = keyframes`
+const orbitAnimation2 = keyframes`
 0% { transform: translate(0, 0); }
   25% { transform: translate(-25px, -15px); }
   50% { transform: translate(-50px, 0); }
@@ -16,7 +20,7 @@ export const orbitAnimation2 = keyframes`
     100% { transform: translate(0, 0); }
 `
 
-export const orbitAnimation3 = keyframes`
+const orbitAnimation3 = keyframes`
 0% { transform: translate(0, 0); }
   25% { transform: translate(35px, 5px); }
   50% { transform: translate(50px, 25px); }
@@ -24,7 +28,7 @@ export const orbitAnimation3 = keyframes`
     100% { transform: translate(0, 0); }
 `
 
-export const orbitAnimation4 = keyframes`
+const orbitAnimation4 = keyframes`
 0% { transform: translate(0, 0); }
   25% { transform: translate(-35px, 0); }
   50% { transform: translate(-50px, 35px); }
@@ -32,7 +36,7 @@ export const orbitAnimation4 = keyframes`
     100% { transform: translate(0, 0); }
 `
 
-export const orbitAnimation5 = keyframes`
+const orbitAnimation5 = keyframes`
 0% { transform: translate(0, 0); }
   25% { transform: translate(35px, -25px); }
   50% { transform: translate(-35px, -50px); }
