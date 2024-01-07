@@ -13,6 +13,7 @@
   text-decoration: none;
   min-height: 100vh;
   background-color: #282c34;
+  color: black;
 }
 
 .App-header .timer-inner {
