@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import styled from 'styled-components';
-import { fadeIn, fadeOut } from '../animations/animations'
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+import { fadeIn, fadeOut } from "../animations/animations";
 
 interface StyledTextProps {
-  show: boolean;
+  show: string;
 }
 
 const StyledSpan = styled.span<StyledTextProps>`
@@ -16,9 +16,9 @@ const StyledSpan = styled.span<StyledTextProps>`
   line-height: normal;
   letter-spacing: 2.4px;
   text-transform: uppercase;
-  animation: ${props => props.show ? fadeIn : fadeOut} 0.3s ease-in-out;
+  animation: ${(props) => (props.show ? fadeIn : fadeOut)} 0.3s ease-in-out;
   animation-fill-mode: forwards;
-`
+`;
 
 const StyledH1 = styled.h1<StyledTextProps>`
   color: var(--Beige, #fef2e7);
@@ -30,9 +30,9 @@ const StyledH1 = styled.h1<StyledTextProps>`
   line-height: normal;
   letter-spacing: 0.66px;
   text-transform: uppercase;
-  animation: ${props => props.show ? fadeIn : fadeOut} 0.3s ease-in-out;
+  animation: ${(props) => (props.show ? fadeIn : fadeOut)} 0.3s ease-in-out;
   animation-fill-mode: forwards;
-`
+`;
 
 const StyledHeader = styled.header`
   display: flex;
@@ -40,20 +40,19 @@ const StyledHeader = styled.header`
   justify-content: center;
   margin-top: 30px;
   gap: 4px;
-`
+`;
 
 export const Header = () => {
-  
-    const [headerText, setHeaderText] = useState('🍅 Keep calm and pomodoro 🍅');
-    const [spanText, setSpanText] = useState('– Pomodoro technique app –');
-    const [showText, setShowText] = useState(true);
-  
-    return (
-      <StyledHeader>
-        <StyledSpan show={showText}>{spanText}</StyledSpan>
-        <StyledH1 show={showText}>{headerText}</StyledH1>
-      </StyledHeader>
-    );
-  };
-  
-  export default Header;
+  const [headerText, setHeaderText] = useState("🍅 Keep calm and pomodoro 🍅");
+  const [spanText, setSpanText] = useState("– Pomodoro technique app –");
+  const [showText, setShowText] = useState(true);
+
+  return (
+    <StyledHeader>
+      <StyledSpan show={showText.toString()}>{spanText}</StyledSpan>
+      <StyledH1 show={showText.toString()}>{headerText}</StyledH1>
+    </StyledHeader>
+  );
+};
+
+export default Header;
