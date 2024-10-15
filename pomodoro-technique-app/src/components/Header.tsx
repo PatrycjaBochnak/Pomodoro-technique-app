@@ -6,7 +6,15 @@ interface StyledTextProps {
   show: string;
 }
 
+const Container = styled.div`
+
+`;
+
 const StyledSpan = styled.span<StyledTextProps>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
   color: var(--Beige, #fef2e7);
   text-align: center;
   font-family: Raleway;
@@ -38,7 +46,7 @@ const StyledHeader = styled.header`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 30px;
+  margin-top: 100px;
   gap: 4px;
 `;
 
