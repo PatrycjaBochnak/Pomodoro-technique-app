@@ -1,22 +1,36 @@
-<h1 align="center"> 🍅 Pomodoro Technique App 🍅
-</h1>
-
-Application which will help you to stay focused on your tasks. It uses the Pomodoro technique, where break has 5 minutes and focused time is going from 25 to any time you want. 
+<h1 align="center"> 🍅 Pomodoro Technique App 🍅 </h1>
+A productivity application that helps you stay focused on your tasks by using the Pomodoro technique. The default work session lasts 25 minutes, followed by a 5-minute break. You can also customize the work session duration according to your preferences.
 
 ---
 
 ## How to start 🚀
 
-1. Install dependiences with `npm install`
-2. Run `npm start` to start developing
+### Prerequisites
+- Node.js v18.13.0
+- npm v9.8.1
+### Installation
 
-## 📝 Project requirements 
-
-- The user can see a timer for 25 minutes - the typical working session - and scratch it to more time
-- After the working session is over, the user can see a timer of 5 minutes - the break session
-- After the break session is over, the user starts a new working session
-- Uer can start, pause, stop and reset the timers
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/PatrycjaBochnak/pomodoro-technique-app.git
+   
+## Key Features 📝
+- 25-minute work session timer (customizable).
+- 5-minute break timer (default, but can be adjusted).
+- User controls to start, pause, stop, and reset timers.
+- Automatic transition from work session to break and vice versa.
+- Option to adjust the focus time to any preferred duration.
 
 ## Deployment 🚀
+ You can find a live demo of this project [here](https://your-live-demo-link.com). The application is deployed using [hosting service], with CI/CD pipeline configured through [tool/service].
 
-You can find a live demo of this project here
+## Technologies Used 🛠️
+- Typescript
+- React 
+- Tailwind CSS 
+- Node.js
+- Express.js
+- MongoDB
+- External APIs (Spoonacular API)
+
+## Screenshots 📸 
