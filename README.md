@@ -27,10 +27,6 @@ A productivity application that helps you stay focused on your tasks by using th
 ## Technologies Used 🛠️
 - Typescript
 - React 
-- Tailwind CSS 
-- Node.js
-- Express.js
-- MongoDB
-- External APIs (Spoonacular API)
+- Styled Components
 
 ## Screenshots 📸 
