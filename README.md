@@ -26,7 +26,17 @@ A productivity application that helps you stay focused on your tasks by using th
 
 ## Technologies Used 🛠️
 - Typescript
-- React 
+- React
+- Zustand
 - Styled Components
+- CSS
+- Local Storage
+- JavaScript
+- React Hooks
+- SVG
+- Responsive Design
 
 ## Screenshots 📸 
+### Main
+<img width="1432" alt="pomodoro" src="https://github.com/user-attachments/assets/87e9786e-eb12-45d1-bd95-05937cf58ff9">
+
