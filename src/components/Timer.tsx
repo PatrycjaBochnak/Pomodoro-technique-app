@@ -110,7 +110,14 @@ const Timer = () => {
   } = useStore();
 
   const handleDecrease = () => {
-    if (mode === "focus") {
+    console.log("Mode:", mode); // Dodaj logowanie
+    if ( mode === "home") {
+      setFocusTime({
+        ...focusTime,
+        minutes: Math.max(focusTime.minutes - 5, 25)
+      })
+    }
+    else if (mode === "focus") {
       setFocusTime({
         ...focusTime,
         minutes: Math.max(focusTime.minutes - 5, 5),
@@ -119,7 +126,7 @@ const Timer = () => {
         ...initialFocusTime,
         minutes: Math.max(initialFocusTime.minutes - 5, 5),
       });
-    } else {
+    } else if (mode === "break") {
       setBreakTime({
         ...breakTime,
         minutes: Math.max(breakTime.minutes - 5, 5),
@@ -128,9 +135,11 @@ const Timer = () => {
         ...initialBreakTime,
         minutes: Math.max(initialBreakTime.minutes - 5, 5),
       });
+    } else {
+      console.log("Unexpected mode value"); // Sprawdź, czy warunek nie został spełniony
     }
   };
-
+  
   const handleIncrease = () => {
     if (mode === "focus" || mode === "home") {
       setFocusTime({ ...focusTime, minutes: focusTime.minutes + 5 });
